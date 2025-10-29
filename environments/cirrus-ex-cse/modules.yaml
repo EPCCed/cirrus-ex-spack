@@ -5,24 +5,12 @@
 
       use_view: false
       roots:
-        lmod: $spack/../archer2-cse/modules
+        lmod: $spack/../cirrus-ex-cse/modules
       lmod:
         projections:
           all: '{name}/{version}'
           cce: '{name}-spack/{version}'
-          aocc: '{name}-spack/{version}'
           gcc: '{name}-spack/{version}'
-          
-        gromacs:
-          environment:
-            set:
-              SLURM_CPU_FREQ_REQ: '2250000'
-        lammps:
-          environment:
-            set:
-              SLURM_CPU_FREQ_REQ: '2250000'
-
-
 
         exclude:
         - cray-mpich
@@ -34,14 +22,18 @@
         - parallel-netcdf
         - netcdf-cxx4
         - netcdf-fortran
+        - gcc
+
 
         hash_length: 0
-        core_compilers: [gcc@7.5.0]
+        core_compilers: [gcc@14.2.1,none]
 
         hide_implicits: true
         all:
           autoload: direct
-        core_specs: [python]
+        core_specs:
+          - python
+          - py-protobuf
         'hierarchy:':
         - compiler
       arch_folder: false

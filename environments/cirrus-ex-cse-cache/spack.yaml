@@ -20,7 +20,7 @@ spack:
     unify: false
   config:
     install_tree:
-      root: $spack/../archer2-cse/opt-cache
+      root: $spack/../cirrus-ex-cse/opt-cache
       padding_length: 128
 
   

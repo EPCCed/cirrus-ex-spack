@@ -11,4 +11,4 @@
 #   ~/.spack/repos.yaml
 # -------------------------------------------------------------------------
 repos:
-  - ${SPACK_EPCC_REPOS}/archer2/spack_repo/archer2
+  - ${SPACK_EPCC_REPOS}/cirrus_ex/spack_repo/cirrus_ex

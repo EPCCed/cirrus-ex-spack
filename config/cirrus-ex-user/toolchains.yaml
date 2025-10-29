@@ -1,0 +1,15 @@
+toolchains:
+  gcc_all:
+      - spec: "%c=gcc@14.2"
+        when: "%c"
+      - spec: "%cxx=gcc@14.2"
+        when: "%cxx"
+      - spec: "%fortran=gcc@14.2"
+        when: "%fortran"
+  cce_all:
+      - spec: "%c=cce@19.0.0"
+        when: "%c"
+      - spec: "%cxx=cce@19.0.0"
+        when: "%cxx"
+      - spec: "%fortran=cce@19.0.0"
+        when: "%fortran"

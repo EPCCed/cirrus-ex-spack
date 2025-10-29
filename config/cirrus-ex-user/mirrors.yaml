@@ -1,6 +1,6 @@
 mirrors:
   cache:
-    url: $spack/../archer2-cse/cache
+    url: $spack/../cirrus-ex/cache
     binary: true
     source: false
     signed: false

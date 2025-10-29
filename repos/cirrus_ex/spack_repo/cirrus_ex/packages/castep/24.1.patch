@@ -1,0 +1,13 @@
+diff --git a/Source/OTFG/CMakeLists.txt b/Source/OTFG/CMakeLists.txt
+index 0dca0885d..e77fb9957 100644
+--- a/Source/OTFG/CMakeLists.txt
++++ b/Source/OTFG/CMakeLists.txt
+@@ -16,7 +16,7 @@ add_castep_lib(NAME otfg
+   $<TARGET_OBJECTS:fundamental_deps>
+ )
+ 
+-target_link_libraries(otfg utility)
++target_link_libraries(otfg utility ${xcf03})
+ add_castep_lib(NAME fundamental_deps OBJECT
+   SRCS
+   otfg_data.f90

@@ -1,0 +1,31 @@
+From 49bdc3e26449634f150602a66d0dab34d09dbc0e Mon Sep 17 00:00:00 2001
+From: Richard Berger <richard.berger@outlook.com>
+Date: Fri, 30 Aug 2024 23:39:40 -0600
+Subject: [PATCH] Fix typo in CMakeLists.txt
+
+---
+ cmake/CMakeLists.txt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/cmake/CMakeLists.txt b/cmake/CMakeLists.txt
+index 723015c1f9986b96d32cefe0f094c628de088e3d..67b95c2ab8977092302cd20c64f762680372ef03 100644
+--- a/cmake/CMakeLists.txt
++++ b/cmake/CMakeLists.txt
+@@ -474,13 +474,13 @@ if(BUILD_OMP)
+   if(CMAKE_VERSION VERSION_LESS 3.28)
+     get_filename_component(_exe "${CMAKE_CXX_COMPILER}" NAME)
+     if((CMAKE_CXX_COMPILER_ID STREQUAL "Clang") AND (_exe STREQUAL "crayCC"))
+-      set(CMAKE_SHARED_LINKER_FLAGS_${BTYPE} "${CMAKE_SHARED_LINKER_FLAGS_${BTYPE} -fopenmp")
+-      set(CMAKE_STATIC_LINKER_FLAGS_${BTYPE} "${CMAKE_STATIC_LINKER_FLAGS_${BTYPE} -fopenmp")
++      set(CMAKE_SHARED_LINKER_FLAGS_${BTYPE} "${CMAKE_SHARED_LINKER_FLAGS_${BTYPE}} -fopenmp")
++      set(CMAKE_STATIC_LINKER_FLAGS_${BTYPE} "${CMAKE_STATIC_LINKER_FLAGS_${BTYPE}} -fopenmp")
+     endif()
+   else()
+     if(CMAKE_CXX_COMPILER_ID STREQUAL "CrayClang")
+-      set(CMAKE_SHARED_LINKER_FLAGS_${BTYPE} "${CMAKE_SHARED_LINKER_FLAGS_${BTYPE} -fopenmp")
+-      set(CMAKE_STATIC_LINKER_FLAGS_${BTYPE} "${CMAKE_STATIC_LINKER_FLAGS_${BTYPE} -fopenmp")
++      set(CMAKE_SHARED_LINKER_FLAGS_${BTYPE} "${CMAKE_SHARED_LINKER_FLAGS_${BTYPE}} -fopenmp")
++      set(CMAKE_STATIC_LINKER_FLAGS_${BTYPE} "${CMAKE_STATIC_LINKER_FLAGS_${BTYPE}} -fopenmp")
+     endif()
+   endif()
+ endif()

@@ -10,13 +10,14 @@ spack:
   
   specs:
     - python@3.11.7
-    - openfoam%gcc
     - castep%gcc
     - lammps%gcc
     - quantum-espresso%gcc
     - openfoam-org%gcc
     - libxc%gcc
     - py-torch  -cuda -rocm -valgrind ^openblas %gcc
+    - python-venv %gcc_all
+    - wannier90 %gcc_all
 
   concretizer:
     unify: false

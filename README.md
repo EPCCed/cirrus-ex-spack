@@ -3,7 +3,7 @@
 These repo contains configurations for the centrally installed version of spack.
 The configuration is set using environment variables. The user can easily override these configurations to a custom directory.
 
-The archer2 repo folder contains patches for broken or non-existent packages on ARCHER2.
+The cirrus repo folder contains patches for broken or non-existent packages on cirrus.
 
 ## Using spack
 
@@ -45,20 +45,20 @@ This is an environment we can use to provide centrlly installed packages.
 You can install the environment wih
 
 ```bash
-spack -d -e environments/archer2-cse install -vvvv
+spack -d -e environments/cirrus-ex-cse install -vvvv
 ```
 If installing from fresh, this might take a long time.
 
 Finally generate environment modules with
 
 ```bash
-spack module lmod refresh --delete-tree -y
+spack -e environments/cirrus-ex-cse module lmod refresh --delete-tree -y
 ```
 Note, this should always be done by the cse user.
 To unlock the modules created, you can generate a module that activates the environment modules.
 
 ```bash
-python scripts/generate_modules.py $VERSION_ENV --module=cse_env --output $MODULES_ROOT/cse_env
+python scripts/generate_modules.py $VERSION_CSE_ENV --module=cse_env --output $MODULES_ROOT/cse_env
 ```
 
 To use the spack generated modules load the `cse_env` module
@@ -75,21 +75,21 @@ The CSE environment, exposed using modules, can be tested with reframe ( see htt
 
 ## Add packages
 
-Add a spec into the `environments/archer2-cse/spack.yaml` in the `specs` list.
+Add a spec into the `environments/cirrus-ex-cse/spack.yaml` in the `specs` list.
 Then install the new specs and re-generate the modules
 
 ```bash
-spack -e  environments/archer2-cse install
+spack -e  environments/cirrus-ex-cse install
 spack module lmod refresh --delete-tree -y
 ```
 
 ## Licensed packages
 
-Source code of licenced packages can be set in a mirror in `archer2-cse/licensed_packages` . This directory should only accessible for the cse user.
+Source code of licenced packages can be set in a mirror in `cirrus-ex-cse/licensed_packages` . This directory should only accessible for the cse user.
 
 ```bash
-spack -e environments/archer2-cse/ mirror  create -d  ../../archer2-cse/licensed_packages <my-package-name>
-spack -e environments/archer2-cse/ install -vvv <my-package-name>
+spack -e environments/cirrus-ex-cse/ mirror  create -d  ../../cirrus-ex-cse/licensed_packages <my-package-name>
+spack -e environments/cirrus-ex-cse/ install -vvv <my-package-name>
 ```
 
 The first time you install a package, the source code needs to be present in your current folder. For subsequent installations, the source will be fetched from the mirror.
@@ -100,12 +100,12 @@ However, make sure to set the permissions in the `packages` section of the `spac
 
 Spack defaults to installing all packages from source. As this requires re-compiling, this can take a long time and/or require a large amount of memory.
 This can be sped up by setting a re-usable build cache of commonly used packages.
-An environment containg specs we want to cache is contained in the `archer2-cse-cache` environment.
+An environment containg specs we want to cache is contained in the `cirrus-ex-cse-cache` environment.
 In order to add packages to the cache run
 
 ```bash
-spack -e environments/archer2-cse-cache/ install # install specs defined in the environment
-spack -e environments/archer2-cse-cache/ buildcache push --only=package cache # Save defined specs in the build cache
-spack -e environments/archer2-cse-cache/ buildcache push --only=dependencies cache # Save dependencies in the build cache
-spack -e environments/archer2-cse-cache/ buildcache update-index cache # Update the cache index, so that the cached build can be found when an archer2 user installs the same package in their own environment
+spack -e environments/cirrus-ex-cse-cache/ install # install specs defined in the environment
+spack -e environments/cirrus-ex-cse-cache/ buildcache push --only=package cache # Save defined specs in the build cache
+spack -e environments/cirrus-ex-cse-cache/ buildcache push --only=dependencies cache # Save dependencies in the build cache
+spack -e environments/cirrus-ex-cse-cache/ buildcache update-index cache # Update the cache index, so that the cached build can be found when a cirrus-ex user installs the same package in their own environment
 ```

@@ -208,6 +208,8 @@ packages:
       prefix: /opt/cray/pe/libsci/25.03.0/GNU/12.2/x86_64/
     
   python:
+    prefer:
+      - "@3.11.7"
     externals:
      - spec: python@3.11.7
 
@@ -242,7 +244,14 @@ packages:
      - spec: py-setuptools@70.0.0
        prefix:  /opt/cray/pe/python/3.11.7
 
-  py-setuptools-scm:
-    externals:
-     - spec: py-setuptools-scm
-       prefix:  /opt/cray/pe/python/3.11.7
+  ncurses:
+    require:
+      - any_of:
+        - "cflags='--for-linker --undefined-version' ldflags='--for-linker --undefined-version'"
+        when: "%cce"
+  
+  alsa-lib:
+    require:
+      - any_of:
+        - "cflags='--for-linker --undefined-version' ldflags='--for-linker --undefined-version'"
+        when: "%cce"

@@ -1,0 +1,18 @@
+--- a/src/timer.cpp	2025-11-03 15:05:56.000000000 +0000
++++ b/src/timer.cpp	2025-11-03 15:04:37.000000000 +0000
+@@ -268,9 +268,12 @@
+     if (_timeout >= 0.0) {
+ #if defined(FMT_STATIC_THOUSANDS_SEPARATOR)
+       char outstr[200];
+-      struct tm *tv = gmtime(&((time_t) _timeout));
+-      strftime(outstr, 200, "%02d:%M:%S", tv);
+-      timeout = outstr;
++      {
++        time_t _timeout_tmp = (time_t)_timeout;
++        struct tm *tv = gmtime(&_timeout_tmp);
++        strftime(outstr, 200, "%02d:%M:%S", tv);
++        timeout = outstr;
++      }
+ #else
+       std::tm tv = fmt::gmtime((std::time_t) _timeout);
+       timeout = fmt::format("{:02d}:{:%M:%S}", tv.tm_yday * 24 + tv.tm_hour, tv);

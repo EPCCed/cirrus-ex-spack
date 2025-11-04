@@ -5,27 +5,30 @@
 
 spack:
 
-  include: 
-    - $spack/../environments/cirrus-ex-cse/modules.yaml
-  
+  include:
+  - $spack/../environments/cirrus-ex-cse/modules.yaml
+
   specs:
-    - python@3.11.7
-    - castep%gcc
-    - lammps%gcc
-    - quantum-espresso%gcc
-    - openfoam-org%gcc
-    - libxc%gcc
-    - py-torch  -cuda -rocm -valgrind ^openblas %gcc
-    - python-venv %gcc_all
-    - wannier90 %gcc_all
+  - python@3.11.7
+  - castep%gcc
+  - lammps%gcc
+  - quantum-espresso%gcc
+  - openfoam-org%gcc
+  - libxc%gcc
+  - py-torch  -cuda -rocm -valgrind ^openblas %gcc
+  - python-venv %gcc_all
+  - wannier90 %gcc_all
+  - cirrus_ex.lammps@20250612 %cce_all
 
   concretizer:
     unify: false
+    splice:
+      automatic: false
   config:
     install_tree:
       root: $spack/../cirrus-ex-cse/opt
       padding_length: 120
-  
+
   mirrors:
     licensed_packages: $spack/../cirrus-ex-cse/licensed_packages
 

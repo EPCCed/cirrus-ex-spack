@@ -39,6 +39,9 @@
           - py-pyyaml 
           - py-jinja2
           - py-markupsafe
+          - cp2k
+          - perl 
+          - likwid
 
 
         'hierarchy:':

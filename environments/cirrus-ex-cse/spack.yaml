@@ -4,7 +4,7 @@
 # configuration settings.
 
 spack:
-
+  
   include:
   - $spack/../environments/cirrus-ex-cse/modules.yaml
 
@@ -17,15 +17,19 @@ spack:
   - py-torch  -cuda -rocm -valgrind ^openblas %gcc
   - python-venv %gcc_all
   - wannier90 %gcc_all
-  - cirrus_ex.lammps@20250612 %cce_all
-  - cirrus_ex.lammps@20250612 %gcc_all
-  - cirrus_ex.cmake@4.1.2  %gcc_all
+  - lammps@20250612 %cce_all
+  - lammps@20250612 %gcc_all
+  - cmake@4.1.2  %gcc_all
   - petsc %gcc_all
   - petsc %cce_all
-  - metis %gcc_all 
+  - metis %gcc_all
   - parmetis %gcc_all
   - metis %cce_all
   - parmetis %cce_all
+  - eigen %gcc_all
+  - eigen %cce_all
+  - likwid %gcc_all
+  - cp2k %gcc_all
 
   concretizer:
     unify: false

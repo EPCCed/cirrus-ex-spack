@@ -74,7 +74,7 @@ class QuantumEspresso(CMakePackage, Package):
     )
 
     with when("build_system=cmake"):
-        depends_on("cmake@3.14.0:", type="build")
+        depends_on("cmake@3.20.0:", type="build")
 
     variant("libxc", default=False, description="Uses libxc")
     depends_on("libxc@5.1.2:", when="+libxc")

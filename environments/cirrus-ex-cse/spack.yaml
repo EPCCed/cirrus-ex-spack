@@ -11,14 +11,21 @@ spack:
   specs:
   - python@3.11.7
   - castep%gcc
-  - lammps%gcc
-  - quantum-espresso%gcc
+  - cirrus_ex.quantum-espresso ^cmake@4 %gcc_all
   - openfoam-org%gcc
   - libxc%gcc
   - py-torch  -cuda -rocm -valgrind ^openblas %gcc
   - python-venv %gcc_all
   - wannier90 %gcc_all
   - cirrus_ex.lammps@20250612 %cce_all
+  - cirrus_ex.lammps@20250612 %gcc_all
+  - cirrus_ex.cmake@4.1.2  %gcc_all
+  - petsc %gcc_all
+  - petsc %cce_all
+  - metis %gcc_all 
+  - parmetis %gcc_all
+  - metis %cce_all
+  - parmetis %cce_all
 
   concretizer:
     unify: false

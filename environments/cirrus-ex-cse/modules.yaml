@@ -22,18 +22,25 @@
         - parallel-netcdf
         - netcdf-cxx4
         - netcdf-fortran
-        - gcc
-
 
         hash_length: 0
         core_compilers: [gcc@14.2.1,none]
 
         hide_implicits: true
         all:
-          autoload: direct
+          autoload: run
+        
         core_specs:
           - python
           - py-protobuf
+          - castep%gcc
+          - openfoam-org%gcc
+          - py-torch %gcc
+          - py-pyyaml 
+          - py-jinja2
+          - py-markupsafe
+
+
         'hierarchy:':
         - compiler
       arch_folder: false

@@ -11,7 +11,7 @@ spack:
   specs:
   - python@3.11.7
   - castep%gcc
-  - cirrus_ex.quantum-espresso ^cmake@4 %gcc_all
+  - quantum-espresso ^cmake@4 %gcc_all
   - openfoam-org%gcc
   - libxc%gcc
   - py-torch  -cuda -rocm -valgrind ^openblas %gcc

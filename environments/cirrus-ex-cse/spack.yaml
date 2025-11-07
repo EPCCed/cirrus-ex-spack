@@ -44,11 +44,11 @@ spack:
   mirrors:
     licensed_packages: $spack/../cirrus-ex-cse/licensed_packages
 
-  # packages:
-    # castep:
-    #   permissions:
-    #     write: user
-    #     read: group
-    #     group: castep
+  packages:
+    castep:
+      permissions:
+        write: user
+        read: group
+        group: castep
 
   view: false

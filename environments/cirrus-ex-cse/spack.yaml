@@ -30,6 +30,7 @@ spack:
   - eigen %cce_all
   - likwid %gcc_all
   - cp2k %gcc_all
+  - openfoam -cgal %gcc_all
 
   concretizer:
     unify: false

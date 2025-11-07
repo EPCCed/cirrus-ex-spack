@@ -35,6 +35,7 @@
           - py-protobuf
           - castep%gcc
           - openfoam-org%gcc
+          - openfoam
           - py-torch %gcc
           - py-pyyaml 
           - py-jinja2

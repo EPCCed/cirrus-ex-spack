@@ -13,3 +13,18 @@ toolchains:
         when: "%cxx"
       - spec: "%fortran=cce@19.0.0"
         when: "%fortran"
+  intel_all:
+      - spec: "%c=intel-oneapi-compilers@2025.0.4"
+        when: "%c"
+      - spec: "%cxx=intel-oneapi-compilers@2025.0.4"
+        when: "%cxx"
+      - spec: "%fortran=intel-oneapi-compilers@2025.0.4"
+        when: "%fortran"
+  aocc_all:
+      - spec: "%c=aocc@5.0.0"
+        when: "%c"
+      - spec: "%cxx=aocc@5.0.0"
+        when: "%cxx"
+      - spec: "%fortran=aocc@5.0.0"
+        when: "%fortran"
+  

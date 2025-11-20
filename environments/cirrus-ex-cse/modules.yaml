@@ -11,8 +11,7 @@
           all: '{name}/{version}'
           cce: '{name}-spack/{version}'
           gcc: '{name}-spack/{version}'
-          cp2k ^openblas: '{name}-openblas/{version}'
-
+          
         exclude:
         - cray-mpich
         - cray-libsci

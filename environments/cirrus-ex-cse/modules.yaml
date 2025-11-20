@@ -11,6 +11,7 @@
           all: '{name}/{version}'
           cce: '{name}-spack/{version}'
           gcc: '{name}-spack/{version}'
+          cp2k ^openblas: '{name}-openblas/{version}'
 
         exclude:
         - cray-mpich
@@ -41,8 +42,10 @@
           - py-jinja2
           - py-markupsafe
           - cp2k
-          - perl 
+          - perl
           - likwid
+          - tmux
+          - quantum-espresso ^cmake@4 %gcc_all
 
 
         'hierarchy:':

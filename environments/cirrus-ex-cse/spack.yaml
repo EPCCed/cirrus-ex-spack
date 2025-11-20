@@ -35,7 +35,6 @@ spack:
   - eigen %intel_all
   - eigen %aocc_all
   - likwid %gcc_all
-  - cp2k@2025.2 +mpi +enable_regtests ^cray-libsci %gcc_all
   - cp2k@2025.2 +mpi +enable_regtests ^openblas ^amdscalapack %gcc_all
   - openfoam -cgal %gcc_all
   - tmux %gcc_all

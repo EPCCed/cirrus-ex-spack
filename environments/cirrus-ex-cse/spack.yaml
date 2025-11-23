@@ -4,7 +4,6 @@
 # configuration settings.
 
 spack:
-  
   include:
   - $spack/../environments/cirrus-ex-cse/modules.yaml
 
@@ -41,9 +40,10 @@ spack:
   - petsc@3.23.4 %intel-oneapi-mkl %intel_all
   - petsc@3.23.4 -fortran %aocc_all
 
+  - gromacs %gcc
   concretizer:
     unify: false
-    splice::
+    'splice:':
       automatic: false
   config:
     install_tree:

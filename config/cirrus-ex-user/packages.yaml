@@ -373,7 +373,26 @@ packages:
      - spec: py-setuptools@70.0.0
        prefix:  /opt/cray/pe/python/3.11.7
 
+  slurm:
+    externals:
+    - spec: slurm@25.05.4
+      prefix: /usr
+  openssl:
+    externals:
+    - spec: openssl@3.2.2
+      prefix: /usr
+  libxml2:
+    externals:
+    - spec: libxml2@2.9.13
+      prefix: /usr
+  hwloc:
+    externals:
+    - spec: hwloc@15.4.1
+      prefix: /usr
   ncurses:
+    externals:
+    - spec: ncurses@6.2
+      prefix: /usr
     require:
       - any_of:
         - "cflags='--for-linker --undefined-version' ldflags='--for-linker --undefined-version'"

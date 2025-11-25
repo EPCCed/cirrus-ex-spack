@@ -20,10 +20,6 @@ module load spack/1.0.2
 - `spack compilers` : show availabe compilers
 - `spack list ` : shows all packages available in the repository
 
-### Creating packages
-
-A few examples can be found in the `custom_packages` subdirectory.
-
 ## Installing Spack
 
 Navigate to the folder where you wish to install spack and clone this folder, including submodules.
@@ -69,7 +65,6 @@ module load cse_env
 You will be able to see all the packages compatible with your current programming environment. To view packages supported only for a certain compiler, load the corresponding cray programming environment or use the `module spider <package_name>` command. 
 
 
-
 ## Licensed packages
 
 Source code of licenced packages can be set in a mirror in `cirrus-ex-cse/licensed_packages` . This directory should only accessible for the cse user.
@@ -97,42 +92,3 @@ spack -e environments/cirrus-ex-cse-cache/ buildcache push --only=dependencies c
 spack -e environments/cirrus-ex-cse-cache/ buildcache update-index cache # Update the cache index, so that the cached build can be found when a cirrus-ex user installs the same package in their own environment
 ```
 
-## Updating the central installation
-
-When updating the central installation:
-
-1. Clone this repository, including spack
-2. Generate modules that can can load the spack and the cse environment
-3. Load the local spack and activate the cse environment
-
-```bash
-module use <my_module>
-module load spack
-spack env activate environments/cirrus-ex-cse/spack.yaml
-```
-3. Add specs to the environment in `environments/cirrus-ex-cse/spack.yaml` file. Alternatively, you can use the command `spack add <my_spec>`.
-
-4. Concretize and install
-
-```bash
-spack concretize
-spack install
-```
-
-Do not force the installation, to avoid changing already installed specs.
-To avoid mixing compilers add the `-U` flag.
-
-4. If you want the modules to be generated in `core`, so that they are visible from any programming environment, add a matching spec in `environments/cirrus-ex-cse/modules.yaml` under the `core_specs` list.
-4. Once the application builds, generate the modules. Make sure that the modules can fit into the LMod hierarchy and that you can run the applicatons using the generated modules. Ideally add a test to Reframe for the new spec.
-
-```bash
-spack module lmod refresh
-```
-
-Note that this will not remove or overwrite existing modules. If you need to remove a module, you will need to so manually. Alternatively, use the option `--delete-tree -y`. However this will remove all modules and re-create them, so probably not a good idea during deployment. 
-
-5. Once you are confident with the installation, commit all the changes and create a pull request. Make sure to include the `spack.lock` file. This is necessary to ensure that the same specs will be installed on the remote system
-
-6. Once the pull request is reviewed, go to `work/y07/shared/cirrus-ex/cirrus-ex-software/spack-cirrus-ex/<latest_version>` as the cse user
-
-7. Pull from the `develop` branch the merged changes. Install the environment and generate the modules as describe above.

@@ -32,13 +32,13 @@ class module_generator:
 
 
 class spack_module_generator(module_generator):
-
+    
     def write_module(self, output="."):
         pathlib.Path(output).mkdir(exist_ok=True,parents=True)
         template=os.path.join(self.repo_path, "scripts","tools","templates","spack.template.lua")
-        module_file=os.path.join(output,self.version + ".lua")
+        module_file=os.path.join(output,"epcc-config-" + self.version + ".lua")
         self._write_generic_module(template,module_file)
-    
+
 
 class cse_env_module_generator(module_generator):
 

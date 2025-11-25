@@ -5,13 +5,6 @@ The configuration is set using environment variables. The user can easily overri
 
 The cirrus repo folder contains patches for broken or non-existent packages on cirrus.
 
-## Using spack
-
-### Loading spack
-
-```bash
-module load spack/1.0.2
-```
 
 ### Useful commands
 
@@ -31,7 +24,14 @@ You can generate module files to load spack using
 
 ```bash
 module load cray-python
-python scripts/generate_modules.py $SPACK_VERSION --output $MODULES_ROOT/spack
+python scripts/generate_modules.py $EPCC_SPACK_CONFIG_VERSION --output $MODULES_ROOT/spack/$SPACK_VERSION
+```
+
+You can now load spack. For instance when using spack version `1.0.2`, epcc spack config version `0.2` and `my_modules` as the modules root directory, you would load spack using.
+
+```bash
+module use my_modules
+module load spack/1.0.2/epcc-config-0.2
 ```
 
 ## Installing the CSE environment
@@ -47,7 +47,7 @@ If installing from fresh, this might take a long time.
 Finally generate environment modules with
 
 ```bash
-spack -e environments/cirrus-ex-cse module lmod refresh --delete-tree -y
+spack -e environments/cirrus-ex-cse module lmod refresh
 ```
 
 To unlock the modules created, you can generate a module that activates the environment modules.
@@ -63,7 +63,6 @@ module load cse_env
 ```
 
 You will be able to see all the packages compatible with your current programming environment. To view packages supported only for a certain compiler, load the corresponding cray programming environment or use the `module spider <package_name>` command. 
-
 
 ## Licensed packages
 

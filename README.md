@@ -59,6 +59,7 @@ python scripts/generate_modules.py $VERSION_CSE_ENV --module=cse_env --output $M
 To use the spack generated modules load the `cse_env` module
 
 ```bash
+module use $MODULES_ROOT
 module load cse_env
 ```
 
@@ -90,4 +91,3 @@ spack -e environments/cirrus-ex-cse-cache/ buildcache push --only=package cache 
 spack -e environments/cirrus-ex-cse-cache/ buildcache push --only=dependencies cache # Save dependencies in the build cache
 spack -e environments/cirrus-ex-cse-cache/ buildcache update-index cache # Update the cache index, so that the cached build can be found when a cirrus-ex user installs the same package in their own environment
 ```
-

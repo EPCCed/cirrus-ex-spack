@@ -35,11 +35,3 @@ prepend_path("LMOD_CUSTOM_CNCM_GNU_10_0_OFI_1_0_X86_TURIN_1_0_CRAY_MPICH_8_0_PRE
 prepend_path("LMOD_CUSTOM_CNCM_CRAYCLANG_16_0_OFI_1_0_X86_TURIN_1_0_CRAY_MPICH_8_0_PREFIX", cray_path )
 prepend_path("LMOD_CUSTOM_CNCM_AOCC_4_1_OFI_1_0_X86_TURIN_1_0_CRAY_MPICH_8_0_PREFIX", aocc_path )
 prepend_path("LMOD_CUSTOM_CNCM_INTEL_2023_2_OFI_1_0_X86_TURIN_1_0_CRAY_MPICH_8_0_PREFIX",  intel_path )
-
-
--- Make dynamic paths available
-if os.getenv("PE_ENV") == "GNU" then
-  load("PrgEnv-gnu")
-elseif os.getenv("PE_ENV") == "CRAY" then
-  load("PrgEnv-cray")
-end

@@ -7,21 +7,23 @@
 
 whatis([[Name : Spack software]])
 whatis([[Version : __EPCC__VERSION__ ]])
-whatis([[Target : zen2]])
+whatis([[Target : zen5]])
 whatis([[Short description : Enable spack generated environment ]])
 
 help([[Name   : Spack software ]])
 help([[Version: __EPCC__VERSION__ ]])
-help([[Target : zen2]])
+help([[Target : zen5]])
 help()
 
 family("spack_compiler")
 
-local softwarebase = "__EPCC__SPACK__REPO__ROOT__/archer2-cse/modules"
+local softwarebase = "__EPCC__SPACK__REPO__ROOT__/cirrus-ex-cse/modules"
 
-local gnu_path = pathJoin(softwarebase, "gcc/11.2.0")
-local cray_path = pathJoin(softwarebase, "cce/15.0.0")
-local aocc_path = pathJoin(softwarebase, "aocc/4.0.0")
+local gnu_path = pathJoin(softwarebase, "gcc/14.2")
+local cray_path = pathJoin(softwarebase, "cce/19.0.0")
+local aocc_path = pathJoin(softwarebase, "aocc/5.0.0")
+local intel_path = pathJoin(softwarebase, "intel-oneapi-compilers/2025.0.4")
+
 local core_path = pathJoin(softwarebase, "Core")
 
 prepend_path("MODULEPATH", core_path)
@@ -29,25 +31,7 @@ prepend_path("MODULEPATH", core_path)
 -- Removing the current software spack from the modules to avoid clashes and recreating some of the environment. 
 -- In the future we might want to separate these module path from other variables in epcc-setup-env in order to avoid the duplication.
 
-unload("epcc-setup-env")
-
-pushenv("LMOD_CUSTOM_COMPILER_GNU_PREFIX", gnu_path)
-pushenv("LMOD_CUSTOM_COMPILER_GNU_8_0_PREFIX", gnu_path )
-pushenv("LMOD_CUSTOM_COMPILER_CRAYCLANG_PREFIX", cray_path )
-pushenv("LMOD_CUSTOM_COMPILER_CRAYCLANG_10_0_PREFIX", cray_path)
-pushenv("LMOD_CUSTOM_COMPILER_AOCC_PREFIX", aocc_path)
-pushenv("LMOD_CUSTOM_COMPILER_AOCC_3_0_PREFIX", aocc_path)
-
-
--- Set any env vars
-setenv("EPCC_SOFTWARE_DIR","/mnt/lustre/a2fs-work4/work/y07/shared")
-setenv("SLURM_CPU_FREQ_REQ","2000000")
-setenv("SBATCH_EXPORT", "SLURM_CPU_FREQ_REQ,SBATCH_EXPORT")
-setenv("SLURM_EXPORT_ENV", "all")
-setenv("EPCC_SINGULARITY_DIR", "/work/y07/shared/singularity-images")
-
-
-
--- Aliases
-local bashStr = "lfs quota -hp $(lsattr -p . | head -1 | awk '{print $1}') ."
-set_shell_function('showquota', bashStr, bashStr)
+prepend_path("LMOD_CUSTOM_CNCM_GNU_10_0_OFI_1_0_X86_TURIN_1_0_CRAY_MPICH_8_0_PREFIX", gnu_path)
+prepend_path("LMOD_CUSTOM_CNCM_CRAYCLANG_16_0_OFI_1_0_X86_TURIN_1_0_CRAY_MPICH_8_0_PREFIX", cray_path )
+prepend_path("LMOD_CUSTOM_CNCM_AOCC_4_1_OFI_1_0_X86_TURIN_1_0_CRAY_MPICH_8_0_PREFIX", aocc_path )
+prepend_path("LMOD_CUSTOM_CNCM_INTEL_2023_2_OFI_1_0_X86_TURIN_1_0_CRAY_MPICH_8_0_PREFIX",  intel_path )

@@ -11,7 +11,7 @@ user's directories at
 
 local pkgBase = "__EPCC__SPACK__REPO__ROOT__"
 
-local pkgConfigBase= pathJoin( pkgBase, "config","archer2-user")
+local pkgConfigBase= pathJoin( pkgBase, "config","cirrus-ex-user")
 
 -- Sets the root of the spack installation location.
 

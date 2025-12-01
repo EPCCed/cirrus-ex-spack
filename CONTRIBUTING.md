@@ -23,8 +23,8 @@ In order to make any change you will need to create a pull request and the pull 
 ## Licensed packages
 
 - When adding packages with a license, follow the same process as for any specs
-- Additionally , make sure the permissions for packages are set correctly ( see the main README file ). Also make sure that the `cse` user is added to the package group.
-- Make sure the only copy for the source code is in the `licensed_packages` mirror and the permission of the mirror folder only allow the cse user to read and write to the mirror. ( see the main README file for more detailed instructions )
+- Additionally , make sure the permissions for packages are set correctly ( see the main README file ). Also make sure that the `cse-cirrus-ex` user is added to the package group.
+- Make sure the only copy for the source code is in the `licensed_packages` mirror and the permission of the mirror folder only allow the `cse-cirrus-ex` user to read and write to the mirror. ( see the main README file for more detailed instructions )
 
 ## Reviewing
 
@@ -55,7 +55,7 @@ spack install <my_spec>
 
 ## Release cycles
 
-We aim to deploy changes at regular intervals ( i.e. every 6 months ), but not continously unless an emergency occurs.
+We aim to deploy changes at regular intervals ( i.e. every 6 months ), but not continuously unless an emergency occurs.
 At regular intervals, we would:
 
 - Generate a release on the github repo. The verson of the `cse_env` and spack config would then be bumped and deployed in a new folder.

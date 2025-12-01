@@ -16,7 +16,7 @@ CSE_ENV_VERSION=0.2
 
 - `spack find`:  view installed packages. See `spack find -h` for options.
 - `spack install ${SPEC}` : to install a specifick package name.
-- `spack compilers` : show availabe compilers
+- `spack compilers` : show available compilers
 - `spack list ` : shows all packages available in the repository
 
 ## Installing Spack
@@ -24,8 +24,7 @@ CSE_ENV_VERSION=0.2
 Navigate to the folder where you wish to install spack and clone this folder, including submodules.
 
 ```bash
-git clone --recursive -b develop https://github.com/lucaparisi91/cirrus-ex-spack.git
-```
+git clone --recursive -b develop https://github.com/EPCCed/cirrus-ex-spack.git
 You can generate module files to load spack in `$MODULES_ROOT` using
 
 ```bash

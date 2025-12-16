@@ -1,0 +1,44 @@
+  modules:
+    default:
+      'enable:':
+      - lmod
+
+      use_view: false
+      roots:
+        lmod: $spack/../cirrus-ex-openmpi/modules
+      lmod:
+        projections:
+          all: '{name}/{version}'
+          cce: '{name}-spack/{version}'
+          gcc: '{name}-spack/{version}'
+          
+        exclude:
+        - cray-mpich
+        - cray-libsci
+        - libfabric
+        - fftw
+        - hdf5
+        - cray-fftw
+        - parallel-netcdf
+        - netcdf-cxx4
+        - netcdf-fortran
+
+        hash_length: 0
+        core_compilers: [gcc@14.2.1,none]
+
+        hide_implicits: true
+        all:
+          autoload: run
+        
+        core_specs:
+          - openmpi@5.0.8 schedulers=slurm fabrics=ofi,cma %gcc_all
+          - openmpi@4.1.8 schedulers=slurm fabrics=ofi,cma %gcc_all
+
+        'hierarchy:':
+        - compiler
+      arch_folder: false
+    prefix_inspections:
+      ./lib:
+      - LD_LIBRARY_PATH
+      ./lib64:
+      - LD_LIBRARY_PATH

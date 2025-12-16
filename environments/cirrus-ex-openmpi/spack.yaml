@@ -1,0 +1,40 @@
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+
+spack:
+  include:
+  - $spack/../environments/cirrus-ex-openmpi/modules.yaml
+
+  specs:
+  - openmpi@5.0.8 schedulers=slurm fabrics=ofi,cma %gcc_all
+  - openmpi@4.1.8 schedulers=slurm fabrics=ofi,cma %gcc_all
+
+  concretizer:
+    unify: false
+    'splice:':
+      automatic: false
+  config:
+    install_tree:
+      root: $spack/../cirrus-ex-openmpi/opt
+      padding_length: 120
+
+  mirrors:
+    licensed_packages: $spack/../cirrus-ex-openmpi/licensed_packages
+
+  packages:
+    mpi:
+      buildable: true
+    libfabric:
+      buildable: true
+    xpmem:
+      externals:
+      - spec: xpmem@2.6.2
+        prefix: /opt/xpmem
+    libfuse:
+      externals:
+      - spec: libfuse@2.9.9
+        prefix: /usr
+
+  view: false

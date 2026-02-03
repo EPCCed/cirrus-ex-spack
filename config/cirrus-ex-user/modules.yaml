@@ -3,7 +3,7 @@ modules:
     'enable:':
     - lmod
     roots:
-      lmod: $user_cache_path/modules
+      lmod: $env/modules
     lmod:
       hash_length: 0
       core_compilers: [gcc,cce,intel-oneapi-compilers] # Disable using compiler hierarchy

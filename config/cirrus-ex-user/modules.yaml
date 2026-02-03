@@ -1,0 +1,34 @@
+modules:
+  default:
+    'enable:':
+    - lmod
+    roots:
+      lmod: $user_cache_path/modules
+    lmod:
+      hash_length: 0
+      core_compilers: [gcc,cce,intel-oneapi-compilers] # Disable using compiler hierarchy
+      hide_implicits: true
+      all:
+        autoload: run
+      
+      exclude:
+      - cray-mpich
+      - cray-libsci
+      - libfabric
+      - fftw
+      - hdf5
+      - cray-fftw
+      - parallel-netcdf
+      - netcdf-cxx4
+      - netcdf-fortran
+    arch_folder: false
+  
+  prefix_inspections:
+    ./lib:
+      - LD_LIBRARY_PATH
+      - LIBRARY_PATH
+    ./lib64:
+      - LD_LIBRARY_PATH
+      - LIBRARY_PATH
+    ./include:
+      - CPATH

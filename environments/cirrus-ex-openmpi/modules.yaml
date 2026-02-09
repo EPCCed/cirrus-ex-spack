@@ -24,7 +24,7 @@
         - netcdf-fortran
 
         hash_length: 0
-        core_compilers: [gcc@14.2.1,none]
+        core_compilers:: [gcc@14.2.1,none]
 
         hide_implicits: true
         all:

@@ -6,6 +6,7 @@ modules:
       lmod: $env/modules
     lmod:
       hash_length: 0
+      hierarchy:: [] # Disable using mpi hierarchy
       core_compilers: [gcc,cce,intel-oneapi-compilers] # Disable using compiler hierarchy
       hide_implicits: true
       all:
@@ -22,6 +23,7 @@ modules:
       - netcdf-cxx4
       - netcdf-fortran
     arch_folder: false
+
   
   prefix_inspections:
     ./lib:

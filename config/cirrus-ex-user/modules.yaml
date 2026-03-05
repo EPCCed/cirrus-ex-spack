@@ -3,7 +3,7 @@ modules:
     'enable:':
     - lmod
     roots:
-      lmod: $env/modules
+      lmod: $user_cache_path/share/spack/modules
     lmod:
       hash_length: 0
       hierarchy:: [] # Disable using mpi hierarchy

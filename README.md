@@ -26,6 +26,7 @@ Navigate to the folder where you wish to install spack and clone this folder, in
 ```bash
 git clone --recursive -b develop https://github.com/EPCCed/cirrus-ex-spack.git
 You can generate module files to load spack in `$MODULES_ROOT` using
+```
 
 ```bash
 module load cray-python

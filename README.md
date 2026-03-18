@@ -98,3 +98,46 @@ spack -e environments/cirrus-ex-cse-cache/ buildcache push --only=package cache 
 spack -e environments/cirrus-ex-cse-cache/ buildcache push --only=dependencies cache # Save dependencies in the build cache
 spack -e environments/cirrus-ex-cse-cache/ buildcache update-index cache # Update the cache index, so that the cached build can be found when a cirrus-ex user installs the same package in their own environment
 ```
+
+## Testing with ReFrame
+
+Cirrus-ex includes a set of ReFrame tests to verify the installation. Refer to the repository 
+at [https://github.com/EPCCed/epcc-reframe](https://github.com/EPCCed/epcc-reframe) for full instructions.
+
+Run the tests with:
+
+```bash
+module load cray-python
+module load reframe
+reframe -C <path_to_config> -c epcc-reframe/tests -R -r
+```
+
+To test newly created modules, update the ReFrame configuration to include the appropriate 
+`module use` path. Use `epcc-reframe/configuration/cirrus-ex.py` as a base and modify the environment configuration:
+
+```python
+...
+"environments": [
+    {
+        "name": "PrgEnv-gnu",
+        "prepare_cmds": ["module use <$MODULES_ROOT>"],
+        "modules": ["PrgEnv-gnu"],
+        "cc": "cc",
+        "cxx": "CC",
+        "ftn": "ftn",
+        "target_systems": ["cirrus-ex"],
+    },
+...
+```
+
+This replaces the existing `cse_env` with the newly created environment for testing.
+
+For the default environment, include both the module path and the default programming environment. 
+The default can be verified using `$LMOD_SYSTEM_DEFAULT_MODULES`:
+
+```python
+"prepare_cmds": [
+    "module use <$MODULES_ROOT>",
+    "module load PrgEnv-cray"
+],
+```

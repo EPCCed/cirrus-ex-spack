@@ -20,7 +20,7 @@ class Cbenchio(CMakePackage):
     
     version("master", branch="master")
     
-    variant("logger_level",default="INFO", description="Logger level", values=("DEBUG","INFO","WARNING","NONE"))
+    variant("logger_level",default="NONE", description="Logger level", values=("DEBUG","INFO","WARNING","NONE"))
     
     depends_on("mpi",type=("build","link"))
     

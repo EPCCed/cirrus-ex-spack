@@ -8,11 +8,10 @@ spack:
   specs:
     - ior % gcc
     - mdtest %gcc
-    - cbenchio@master %gcc
+    - cbenchio@master logger_level=NONE %gcc
     - fio %gcc
     - darshan-runtime +mpi +lustre +hdf5  %gcc
     - darshan-util %gcc
-    - cbenchio %gcc
     - xios@3 %gcc
     - hpctoolkit@2026 %gcc
     - hpcviewer@2026

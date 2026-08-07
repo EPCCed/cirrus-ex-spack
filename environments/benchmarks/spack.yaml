@@ -10,14 +10,7 @@ spack:
     - mdtest %gcc
     - cbenchio@master logger_level=NONE %gcc
     - fio %gcc
-    - darshan-runtime +mpi +lustre +hdf5  %gcc
-    - darshan-util %gcc
-    - xios@3 %gcc
-    - hpctoolkit@2026 %gcc
-    - hpcviewer@2026
-    - lfric@3.1.1 %gcc
-    - lfric-meta@3.1.1 +xios %gcc
-
+    
   concretizer:
     unify: false
     splice::
